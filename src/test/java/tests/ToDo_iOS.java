@@ -20,7 +20,7 @@ public class ToDo_iOS extends TestBase{
     @BeforeMethod
     public void setUp() {
         try {
-            iOS_setUp();
+            iOS_setUp("4723", "iPhone 15 Pro TAM", "17.4", "E6D42DE8-62B4-4F22-B5DF-B511035585D7", "8200");
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
