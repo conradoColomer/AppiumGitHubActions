@@ -14,7 +14,7 @@ public class TestBase extends AbstractTestNGCucumberTests  {
     public static void Android_setUp() throws MalformedURLException {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("platformName", "Android");
-        capabilities.setCapability("platformVersion", "12");
+        capabilities.setCapability("platformVersion", "7.1.1");
         capabilities.setCapability("deviceName", "Android 12");
         capabilities.setCapability("automationName", "UiAutomator2");
         capabilities.setCapability("app","/Users/theappmaster/Downloads/apksDemoAdvTech/ToDo.apk");
