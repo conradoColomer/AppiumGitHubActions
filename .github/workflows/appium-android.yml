@@ -29,7 +29,7 @@ jobs:
         java-version: 1.8
     - uses: actions/setup-node@v2
       with:
-        node-version: '12'
+        node-version: '18'
     - run: |
         npm install -g appium@1.20.2
         appium -v
