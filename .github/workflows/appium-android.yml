@@ -41,4 +41,6 @@ jobs:
         target: ${{ matrix.target }}
         arch: x86_64
         profile: Nexus 6
+        emulator-options: -no-boot-anim -no-window -gpu swiftshader_indirect
         script: mvn clean test -Pandroid
+
