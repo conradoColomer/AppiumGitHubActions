@@ -34,19 +34,11 @@ jobs:
         npm install -g appium@1.20.2
         appium -v
         appium &>/dev/null &
-    - name: Start Emulator
-      uses: reactivecircus/android-emulator-runner@v2
+    - name: Run Appium Tests
+      uses: reactivecircus/android-emulator-runner@v1
       with:
         api-level: ${{ matrix.api-level }}
         target: ${{ matrix.target }}
         arch: x86_64
         profile: Nexus 6
-        emulator-options: -no-boot-anim -no-window -gpu swiftshader_indirect
-        disable-animations: true
-        script: adb wait-for-device shell getprop sys.boot_completed
-    - name: Wait for emulator to boot
-      run: adb shell getprop sys.boot_completed | grep -m 1 '1' || echo 'Waiting for emulator to boot...'
-    - name: Run Appium Tests
-      run: mvn clean test -Pandroid
-
-
+        script: mvn clean test -Pandroid
