@@ -11,13 +11,23 @@ import java.net.URL;
 public class TestBase extends AbstractTestNGCucumberTests  {
     public static AppiumDriver driver;
 
+//    public static void Android_setUp() throws MalformedURLException {
+//        DesiredCapabilities capabilities = new DesiredCapabilities();
+//        capabilities.setCapability("platformName", "Android");
+//        capabilities.setCapability("platformVersion", "7.1.1");
+//        capabilities.setCapability("deviceName", "Android 12");
+//        capabilities.setCapability("automationName", "UiAutomator2");
+//        capabilities.setCapability("app","/Users/theappmaster/Downloads/apksDemoAdvTech/ToDo.apk");
+//        driver = new AppiumDriver(new URL("http://localhost:4723/"), capabilities);
+//    }
+
     public static void Android_setUp() throws MalformedURLException {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("platformName", "Android");
         capabilities.setCapability("platformVersion", "7.1.1");
-        capabilities.setCapability("deviceName", "Android 12");
+        capabilities.setCapability("deviceName", "Nexus 6");
         capabilities.setCapability("automationName", "UiAutomator2");
-        capabilities.setCapability("app","/Users/theappmaster/Downloads/apksDemoAdvTech/ToDo.apk");
+        capabilities.setCapability("app", System.getProperty("user.dir") + "/path/to/ToDo.apk");
         driver = new AppiumDriver(new URL("http://localhost:4723/"), capabilities);
     }
 
