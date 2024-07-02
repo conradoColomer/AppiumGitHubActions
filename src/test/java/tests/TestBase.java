@@ -14,10 +14,10 @@ public class TestBase extends AbstractTestNGCucumberTests  {
     public static void Android_setUp() throws MalformedURLException {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("platformName", "Android");
-        capabilities.setCapability("platformVersion", "7.1.1");
+        capabilities.setCapability("platformVersion", "11.0");  // Ensure this matches the emulator API level
         capabilities.setCapability("deviceName", "Android Emulator");
         capabilities.setCapability("automationName", "UiAutomator2");
-        capabilities.setCapability("app",System.getProperty("user.dir") + "/apps/ToDo.apk" ); //"/Users/theappmaster/Downloads/apksDemoAdvTech/ToDo.apk");
+        capabilities.setCapability("app", System.getProperty("user.dir") + "/apps/ToDo.apk");
         driver = new AppiumDriver(new URL("http://localhost:4723/"), capabilities);
     }
 
