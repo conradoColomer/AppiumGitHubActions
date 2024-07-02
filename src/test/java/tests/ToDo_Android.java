@@ -50,7 +50,7 @@ public class ToDo_Android extends TestBase{
         createTaskPage = new CreateTaskPage(driver);
 //       Creating Android prerequisite = avoid the Android popup
         androidPopUp = new AndroidPopUp(driver);
-       if (androidPopUp.isLaterBtnDisplayed()){
+       if (androidPopUp.idDisplayedHandMade()){
         androidPopUp.clickLater();} else {
         taskListPage.clickAddTaskBtn();
         createTaskPage.enterTaskName("taskName Conrado Mendez Colomer ");
