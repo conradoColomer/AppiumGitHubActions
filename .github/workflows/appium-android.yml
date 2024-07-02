@@ -35,14 +35,13 @@ jobs:
         appium -v
         appium &>/dev/null &
     - name: Start Emulator
-      uses: reactivecircus/android-emulator-runner@v2
+      uses: reactivecircus/android-emulator-runner@v1
       with:
         api-level: ${{ matrix.api-level }}
         target: ${{ matrix.target }}
         arch: x86_64
         profile: Nexus 6
         emulator-options: -no-boot-anim -no-window -gpu swiftshader_indirect
-    - name: Wait for emulator to boot
-      run: adb shell getprop sys.boot_completed | grep -m 1 '1' || echo 'Waiting for emulator to boot...'
+        script: adb shell getprop sys.boot_completed | grep -m 1 '1' || echo 'Waiting for emulator to boot...'
     - name: Run Tests
       run: mvn clean test -Pandroid
