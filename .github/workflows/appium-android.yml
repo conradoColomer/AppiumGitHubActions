@@ -42,6 +42,5 @@ jobs:
         arch: x86_64
         profile: Nexus 6
         emulator-options: -no-boot-anim -no-window -gpu swiftshader_indirect
-        script: adb shell getprop sys.boot_completed | grep -m 1 '1' || echo 'Waiting for emulator to boot...'
     - name: Run Tests
       run: mvn clean test -Pandroid
