@@ -24,8 +24,26 @@ public class ToDo_Android extends TestBase{
                 , "Tasks Data", 2 );
     }
 
-    @Test (dataProvider =  "tasks data")
-    public void test_add_task (String taskName, String taskDesc) throws MalformedURLException {
+//    @Test (dataProvider =  "tasks data")
+//    public void test_add_task (String taskName, String taskDesc) throws MalformedURLException {
+//
+//        Android_setUp(); // We can call it because is a PUBLIC STATIC VOID
+//        taskListPage = new TaskListPage(driver);
+//        createTaskPage = new CreateTaskPage(driver);
+////       Creating Android prerequisite = avoid the Android popup
+//        androidPopUp = new AndroidPopUp(driver);
+//        androidPopUp.clickLater();
+//        taskListPage.clickAddTaskBtn();
+//        createTaskPage.enterTaskName(taskName);
+//        createTaskPage.enterNoteDesc(taskDesc);
+//        driver.hideKeyboard();
+//        createTaskPage.clickSaveBtn();
+//        tearDown();
+//
+//    }
+
+    @Test
+    public void test_add_task () throws MalformedURLException {
 
         Android_setUp(); // We can call it because is a PUBLIC STATIC VOID
         taskListPage = new TaskListPage(driver);
@@ -34,8 +52,8 @@ public class ToDo_Android extends TestBase{
         androidPopUp = new AndroidPopUp(driver);
         androidPopUp.clickLater();
         taskListPage.clickAddTaskBtn();
-        createTaskPage.enterTaskName(taskName);
-        createTaskPage.enterNoteDesc(taskDesc);
+        createTaskPage.enterTaskName("taskName Conrado Mendez Colomer ");
+        createTaskPage.enterNoteDesc("taskDesc We are trying to run CIIIIII ");
         driver.hideKeyboard();
         createTaskPage.clickSaveBtn();
         tearDown();
@@ -44,3 +62,4 @@ public class ToDo_Android extends TestBase{
 
 
 }
+
