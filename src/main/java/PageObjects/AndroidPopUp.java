@@ -42,6 +42,14 @@ public class AndroidPopUp extends PageBase{
         }
     }
 
+    public boolean idDisplayedHandMade() {
+        if (laterBtn.isDisplayed()) {
+            return true;
+        }else {
+            return false;
+        }
+    }
+
 
 
 }
