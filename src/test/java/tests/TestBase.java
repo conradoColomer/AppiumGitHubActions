@@ -18,7 +18,7 @@ public class TestBase extends AbstractTestNGCucumberTests  {
         capabilities.setCapability("deviceName", "Android Emulator");
         capabilities.setCapability("automationName", "UiAutomator2");
         capabilities.setCapability("app", System.getProperty("user.dir") + "/apps/ToDo.apk");
-        driver = new AppiumDriver(new URL("http://localhost:4723/"), capabilities);
+        driver = new AppiumDriver(new URL("http://localhost:4723/wd/hub"), capabilities);
     }
 
     public static void iOS_setUp(String port, String deviceName,
