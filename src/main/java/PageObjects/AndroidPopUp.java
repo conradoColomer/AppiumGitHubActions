@@ -16,7 +16,7 @@ public class AndroidPopUp extends PageBase{
     @AndroidFindBy(xpath = "//android.widget.Button[@resource-id=\"android:id/button3\"]")
     @AndroidFindBy (id ="android:id/button3")
     MobileElement laterBtn;
-   @AndroidFindBy (id= "android:id/button1")
+    @AndroidFindBy (id= "android:id/button1")
     MobileElement rateNowBtn;
 
    public void clickDeny (){
@@ -34,4 +34,17 @@ public class AndroidPopUp extends PageBase{
        click(rateNowBtn);
     }
 
+    public boolean isLaterBtnDisplayed() {
+        try {
+            return laterBtn.isDisplayed();
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+
+
 }
+
+
+
