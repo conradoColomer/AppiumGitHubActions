@@ -43,6 +43,5 @@ jobs:
         profile: Nexus 6
         headless: true
         disable-animations: true
-        script: adb shell getprop sys.boot_completed | grep -m 1 '1' || echo 'Waiting for emulator to boot...'
     - name: Run Tests
       run: mvn clean test -Pandroid
