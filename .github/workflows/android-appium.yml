@@ -29,9 +29,9 @@ jobs:
         java-version: 11
     - uses: actions/setup-node@v2
       with:
-        node-version: '18'
+        node-version: '21.7.1'
     - run: |
-        npm install -g appium@1.20.2
+        npm install -g appium@2.4.1
         appium -v
         appium &>/dev/null &
     - name: Start Emulator
