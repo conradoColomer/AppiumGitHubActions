@@ -42,8 +42,8 @@ jobs:
           target: ${{ matrix.target }}
           arch: x86_64
           profile: Nexus 6
-          headless: true
           disable-animations: true
+          emulator-options: -no-boot-anim -no-window -gpu swiftshader_indirect
       - name: Wait for Emulator
         run: sleep 60
       - name: Run Tests
