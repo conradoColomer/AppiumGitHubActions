@@ -11,7 +11,7 @@ jobs:
     runs-on: macos-12
     strategy:
       matrix:
-        api-level: [30]
+        api-level: [30]  # Updated API level to match Android 12
         target: [default]
     steps:
       - uses: actions/checkout@v2
