@@ -31,10 +31,10 @@ jobs:
         with:
           node-version: '21.7.1'
       - run: |
-         npm install -g appium@2.4.1
-          appium -v
-          appium driver install uiautomator2@2.42.2
-           appium --port 4723 &
+          npm install -g appium@2.4.1
+           appium -v
+           appium driver install uiautomator2@2.42.2
+            appium --port 4723 &
       - name: Start Emulator
         uses: reactivecircus/android-emulator-runner@v2
         with:
@@ -42,9 +42,10 @@ jobs:
           target: ${{ matrix.target }}
           arch: x86_64
           profile: Nexus 6
+          headless: true
           disable-animations: true
-          emulator-options: -no-boot-anim -no-window -gpu swiftshader_indirect
-      - name: Wait for Emulator
-        run: sleep 60
+          script: |
+            adb shell getprop sys.boot_completed | grep -m 1 '1' || echo 'Waiting for emulator to boot...'
+            sleep 60
       - name: Run Tests
         run: mvn clean test -Pandroid
