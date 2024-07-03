@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2024-07-03T03:19:09Z" name="Suite" finished-at="2024-07-03T03:19:27Z" duration-ms="17719">
+    <groups>
+      <group name="cucumber">
+        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper, io.cucumber.testng.FeatureWrapper)[pri:0, instance:tests.ToDo_Android@7a8c8dcf]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
+      </group> <!-- cucumber -->
+    </groups>
+    <test started-at="2024-07-03T03:19:09Z" name="Android" finished-at="2024-07-03T03:19:27Z" duration-ms="17719">
+      <class name="tests.ToDo_Android">
+        <test-method is-config="true" signature="setUpClass()[pri:0, instance:tests.ToDo_Android@7a8c8dcf]" started-at="2024-07-03T03:19:09Z" name="setUpClass" finished-at="2024-07-03T03:19:09Z" duration-ms="167" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpClass -->
+        <test-method signature="test_add_task()[pri:0, instance:tests.ToDo_Android@7a8c8dcf]" started-at="2024-07-03T03:19:09Z" name="test_add_task" finished-at="2024-07-03T03:19:27Z" duration-ms="17528" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test_add_task -->
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:tests.ToDo_Android@7a8c8dcf]" started-at="2024-07-03T03:19:27Z" name="tearDownClass" finished-at="2024-07-03T03:19:27Z" duration-ms="10" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownClass -->
+      </class> <!-- tests.ToDo_Android -->
+    </test> <!-- Android -->
+  </suite> <!-- Suite -->
+</testng-results>

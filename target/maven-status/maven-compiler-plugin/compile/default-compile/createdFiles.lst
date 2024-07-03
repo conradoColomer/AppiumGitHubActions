@@ -1,0 +1,6 @@
+PageObjects/TaskListPage.class
+org/example/Main.class
+PageObjects/PageBase.class
+PageObjects/CreateTaskPage.class
+PageObjects/AndroidPopUp.class
+utils/JsonReader.class
