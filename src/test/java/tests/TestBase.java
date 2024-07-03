@@ -10,7 +10,7 @@ import java.net.URL;
 
 public class TestBase extends AbstractTestNGCucumberTests  {
     public static AppiumDriver driver;
-
+// Hi conrad. push was right
     public static void Android_setUp() throws MalformedURLException {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("platformName", "Android");
