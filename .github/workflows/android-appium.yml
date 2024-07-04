@@ -38,14 +38,15 @@ jobs:
       - name: Start Emulator
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: ${{ matrix.api-level }}
-          target: ${{ matrix.target }}
-          arch: x86_64
-          profile: Nexus 6
-          headless: true
-          disable-animations: true
-          script: |
-            adb shell getprop sys.boot_completed | grep -m 1 '1' || echo 'Waiting for emulator to boot...'
-            sleep 60
-      - name: Run Tests
-        run: mvn clean test -Pandroid
+          api-level: [30]       #${{ matrix.api-level }}
+          script: mvn clean test -Pandroid
+#          target: ${{ matrix.target }}
+#          arch: x86_64
+#          profile: Nexus 6
+#          headless: true
+#          disable-animations: true
+#          script: |
+#            adb shell getprop sys.boot_completed | grep -m 1 '1' || echo 'Waiting for emulator to boot...'
+#            sleep 60
+#      - name: Run Tests
+#        run: mvn clean test -Pandroid
