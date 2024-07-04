@@ -16,7 +16,7 @@ on:
 
 jobs:
   build:
-    runs-on: macos-12
+    runs-on: macos-11
     strategy:
       matrix:
         api-level: [30]  # Updated API level
@@ -38,7 +38,7 @@ jobs:
       - name: Start Emulator
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 30    #${{ matrix.api-level }}
+          api-level: 29    #${{ matrix.api-level }}
           emulator-build: 7425822
           script: mvn clean test -Pandroid
 #          target: ${{ matrix.target }}
