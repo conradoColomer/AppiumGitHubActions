@@ -38,7 +38,7 @@ jobs:
       - name: Start Emulator
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: [30]       #${{ matrix.api-level }}
+          api-level: 30    #${{ matrix.api-level }}
           script: mvn clean test -Pandroid
 #          target: ${{ matrix.target }}
 #          arch: x86_64
