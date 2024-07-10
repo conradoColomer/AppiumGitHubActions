@@ -29,13 +29,11 @@ public class TestBase extends AbstractTestNGCucumberTests  {
                                  String wdaLocalPort) throws MalformedURLException {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("platformName", "iOS");
-        capabilities.setCapability("platformVersion", platformVersion);
-        capabilities.setCapability("deviceName", deviceName);
+        capabilities.setCapability("deviceName", "Iphone X");
         capabilities.setCapability("automationName", "XCUITest");
+        capabilities.setCapability("isHeadless", true);
         capabilities.setCapability("app",
                 System.getProperty("user.dir") + "/apps/DailyCheck.app");
-        capabilities.setCapability("wdaLocalPort", wdaLocalPort);
-        capabilities.setCapability("udid", UDID);
         driver = new IOSDriver(new URL("http://localhost:" + port + "/"), capabilities);
     }
 
