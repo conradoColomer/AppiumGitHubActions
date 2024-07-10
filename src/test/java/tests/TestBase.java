@@ -23,10 +23,7 @@ public class TestBase extends AbstractTestNGCucumberTests  {
         driver = new AppiumDriver(new URL("http://localhost:4723/"), capabilities);
     }
 
-    public static void iOS_setUp(String port, String deviceName,
-                                 String platformVersion,
-                                 String UDID,
-                                 String wdaLocalPort) throws MalformedURLException {
+    public static void iOS_setUp() throws MalformedURLException {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("platformName", "iOS");
         capabilities.setCapability("deviceName", "Iphone X");
@@ -34,7 +31,7 @@ public class TestBase extends AbstractTestNGCucumberTests  {
         capabilities.setCapability("isHeadless", true);
         capabilities.setCapability("app",
                 System.getProperty("user.dir") + "/apps/DailyCheck.app");
-        driver = new IOSDriver(new URL("http://localhost:" + port + "/"), capabilities);
+        driver = new IOSDriver(new URL("http://localhost:4723/"), capabilities);
     }
 
     public static void tearDown() {
