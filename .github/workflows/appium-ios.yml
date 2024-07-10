@@ -16,7 +16,7 @@ on:
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: macos-10.15
 
     steps:
       - uses: actions/checkout@v2
@@ -28,7 +28,7 @@ jobs:
         with:
           node-version: '21.7.1'
       - run: |
-          npm install -g appium@v1.20.2
+          npm install -g appium@2.4.1
           appium -v
           appium --port 4723 &
           mvn clean test -PiOS
