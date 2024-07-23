@@ -35,6 +35,17 @@ public class TestBase extends AbstractTestNGCucumberTests  {
         driver = new IOSDriver(new URL("http://localhost:4723/"), capabilities);
     }
 
+    public void initAppliToolsEyes (){
+//        here we can set up the applitools eyes for each test
+//        we can also add as parameters the Test name / app / etc....
+//        also we can add the tear
+//                eyes.close
+//                        eyes.abort if not closed
+//        We can the initialize it befor every visual test we are going to start testing
+//                and in the final method of the class then execute the other method for shooting down eyes
+    }
+
+
     public static void tearDown() {
         if (null != driver) {
             driver.quit();
