@@ -41,7 +41,7 @@ public class TestBase extends AbstractTestNGCucumberTests  {
 
     public static void initAppliToolsEyes (String appName, String testName){
         eyes = new Eyes();
-        eyes.setApiKey("q98g1xArEzCVpN0UOgTC0uiEqbNpUIESeDV8ae8fAKiY110");
+        eyes.setApiKey(API_KEY);
         eyes.setForceFullPageScreenshot(true);
         eyes.open(driver, appName,testName);
 
@@ -67,6 +67,8 @@ public class TestBase extends AbstractTestNGCucumberTests  {
                 eyes = null; // Limpiar la referencia
             }
         }
+
+
 
 
         if (null != driver ) {
