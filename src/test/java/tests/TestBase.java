@@ -5,20 +5,21 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.ios.IOSDriver;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.annotations.Test;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 
 public class TestBase extends AbstractTestNGCucumberTests  {
     public static AppiumDriver driver;
-   public static  Eyes eyes;
+    public static  Eyes eyes;
     final String API_KEY = System.getenv("API_KEY");
 // Hi conrad. push was right
     public static void Android_setUp() throws MalformedURLException {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("platformName", "Android");
 
-        capabilities.setCapability("platformVersion", "10");  // Ensure this matches the emulator API level
+        capabilities.setCapability("platformVersion", "12");  // Ensure this matches the emulator API level
 
         capabilities.setCapability("deviceName", "Android Emulator");
         capabilities.setCapability("automationName", "UiAutomator2");
@@ -38,9 +39,10 @@ public class TestBase extends AbstractTestNGCucumberTests  {
         driver = new IOSDriver(new URL("http://localhost:4723/"), capabilities);
     }
 
-    public void initAppliToolsEyes (){
+    public void initAppliToolsEyes (String appName, String testName){
         eyes = new Eyes();
         eyes.setApiKey(API_KEY);
+        eyes.open(driver, appName,testName);
 
 //        here we can set up the applitools eyes for each test
 //        we can also add as parameters the Test name / app / etc....
@@ -53,7 +55,6 @@ public class TestBase extends AbstractTestNGCucumberTests  {
 
 
     public static void tearDown() {
-
         // Cerrar Applitools Eyes si está presente y se ha iniciado una sesión
         if (eyes != null) {
             try {

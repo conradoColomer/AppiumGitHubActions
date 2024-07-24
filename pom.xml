@@ -16,11 +16,12 @@
 
 
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/com.applitools/eyes-selenium-java5 -->
         <!-- https://mvnrepository.com/artifact/com.applitools/eyes-appium-java5 -->
         <dependency>
             <groupId>com.applitools</groupId>
             <artifactId>eyes-appium-java5</artifactId>
-            <version>5.67.11</version>
+            <version>5.10.0</version>
         </dependency>
 
 

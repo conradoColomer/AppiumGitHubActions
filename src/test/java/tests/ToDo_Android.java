@@ -63,8 +63,25 @@ public class ToDo_Android extends TestBase{
     }
 
     @Test
-    public void visualCheckInitialScreen (String appName, String testName) {
+    public void visualCheckInitialScreen () throws MalformedURLException {
+        String appName = "ToDo";
+        String testName  = "Initial Screen";
 
+        Android_setUp(); // We can call it because is a PUBLIC STATIC VOID
+        taskListPage = new TaskListPage(driver);
+        createTaskPage = new CreateTaskPage(driver);
+//       Creating Android prerequisite = avoid the Android popup
+        androidPopUp = new AndroidPopUp(driver);
+        if (androidPopUp.idDisplayedHandMade()){
+            androidPopUp.clickLater();} else {
+            initAppliToolsEyes(appName,testName);
+            taskListPage.clickAddTaskBtn();
+            createTaskPage.enterTaskName("taskName Conrado Mendez Colomer ");
+            createTaskPage.enterNoteDesc("taskDesc We are trying to run CIIIIII ");
+            driver.hideKeyboard();
+            createTaskPage.clickSaveBtn();}
+
+        tearDown();
 
 
     }
