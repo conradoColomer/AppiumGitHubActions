@@ -62,10 +62,13 @@ public class ToDo_Android extends TestBase{
 
     }
 
+
+//    COMMON VISUAL CHECK
+
     @Test
     public void visualCheckInitialScreen () throws MalformedURLException {
         String appName = "ToDo";
-        String testName  = "Initial Screen";
+        String testName  = "Initial Screen"; //Batch name ====> see a way to improve
 
         Android_setUp(); // We can call it because is a PUBLIC STATIC VOID
         taskListPage = new TaskListPage(driver);
@@ -75,16 +78,27 @@ public class ToDo_Android extends TestBase{
         if (androidPopUp.idDisplayedHandMade()){
             androidPopUp.clickLater();} else {
             initAppliToolsEyes(appName,testName);
-            eyes.checkWindow();
+            eyes.checkWindow("Create task page");
             taskListPage.clickAddTaskBtn();
             createTaskPage.enterTaskName("taskName Conrado Mendez Colomer ");
             createTaskPage.enterNoteDesc("taskDesc We are trying to run CIIIIII ");
+            eyes.checkWindow("Task list input");
             driver.hideKeyboard();
             createTaskPage.clickSaveBtn();}
+        eyes.checkWindow("initial screen with Task display");
 
         tearDown();
 
     }
+
+//      IGNORE REGIONS
+    @Test
+    public void visualCheck_IgnoreRegions () throws MalformedURLException {
+
+//        we'll need to see how to include visual check EXCLUDING
+//    the Strings so it can be a global test'
+    }
+
 
 
 
