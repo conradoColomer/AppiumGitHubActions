@@ -1,15 +1,19 @@
 package tests;
 
+import com.applitools.eyes.appium.Eyes;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.ios.IOSDriver;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.annotations.Test;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 
 public class TestBase extends AbstractTestNGCucumberTests  {
     public static AppiumDriver driver;
+    public static  Eyes eyes;
+    static final String API_KEY = System.getenv("API_KEY");
 // Hi conrad. push was right
     public static void Android_setUp() throws MalformedURLException {
         DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -35,7 +39,12 @@ public class TestBase extends AbstractTestNGCucumberTests  {
         driver = new IOSDriver(new URL("http://localhost:4723/"), capabilities);
     }
 
-    public void initAppliToolsEyes (){
+    public static void initAppliToolsEyes (String appName, String testName){
+        eyes = new Eyes();
+        eyes.setApiKey("q98g1xArEzCVpN0UOgTC0uiEqbNpUIESeDV8ae8fAKiY110");
+        eyes.setForceFullPageScreenshot(true);
+        eyes.open(driver, appName,testName);
+
 //        here we can set up the applitools eyes for each test
 //        we can also add as parameters the Test name / app / etc....
 //        also we can add the tear
@@ -47,7 +56,20 @@ public class TestBase extends AbstractTestNGCucumberTests  {
 
 
     public static void tearDown() {
-        if (null != driver) {
+        // Cerrar Applitools Eyes si está presente y se ha iniciado una sesión
+        if (eyes != null) {
+            try {
+                eyes.close();
+            } catch (Exception e) {
+                System.out.println("Error while closing Applitools Eyes: " + e.getMessage());
+                eyes.abortIfNotClosed();
+            } finally {
+                eyes = null; // Limpiar la referencia
+            }
+        }
+
+
+        if (null != driver ) {
             driver.quit();
         }
     }
