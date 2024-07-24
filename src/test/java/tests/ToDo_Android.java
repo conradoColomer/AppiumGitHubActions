@@ -62,6 +62,13 @@ public class ToDo_Android extends TestBase{
 
     }
 
+    @Test
+    public void visualCheckInitialScreen (String appName, String testName) {
+
+
+
+    }
+
 
 
 }
