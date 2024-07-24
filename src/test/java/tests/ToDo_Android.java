@@ -75,6 +75,7 @@ public class ToDo_Android extends TestBase{
         if (androidPopUp.idDisplayedHandMade()){
             androidPopUp.clickLater();} else {
             initAppliToolsEyes(appName,testName);
+            eyes.checkWindow();
             taskListPage.clickAddTaskBtn();
             createTaskPage.enterTaskName("taskName Conrado Mendez Colomer ");
             createTaskPage.enterNoteDesc("taskDesc We are trying to run CIIIIII ");
@@ -82,7 +83,6 @@ public class ToDo_Android extends TestBase{
             createTaskPage.clickSaveBtn();}
 
         tearDown();
-
 
     }
 

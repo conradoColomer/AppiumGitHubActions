@@ -13,7 +13,7 @@ import java.net.URL;
 public class TestBase extends AbstractTestNGCucumberTests  {
     public static AppiumDriver driver;
     public static  Eyes eyes;
-    final String API_KEY = System.getenv("API_KEY");
+    static final String API_KEY = System.getenv("API_KEY");
 // Hi conrad. push was right
     public static void Android_setUp() throws MalformedURLException {
         DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -39,9 +39,10 @@ public class TestBase extends AbstractTestNGCucumberTests  {
         driver = new IOSDriver(new URL("http://localhost:4723/"), capabilities);
     }
 
-    public void initAppliToolsEyes (String appName, String testName){
+    public static void initAppliToolsEyes (String appName, String testName){
         eyes = new Eyes();
-        eyes.setApiKey(API_KEY);
+        eyes.setApiKey("q98g1xArEzCVpN0UOgTC0uiEqbNpUIESeDV8ae8fAKiY110");
+        eyes.setForceFullPageScreenshot(true);
         eyes.open(driver, appName,testName);
 
 //        here we can set up the applitools eyes for each test
