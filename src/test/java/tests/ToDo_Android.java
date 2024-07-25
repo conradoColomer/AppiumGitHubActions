@@ -3,7 +3,10 @@ package tests;
 import PageObjects.AndroidPopUp;
 import PageObjects.CreateTaskPage;
 import PageObjects.TaskListPage;
+import com.applitools.eyes.appium.Eyes;
+import com.applitools.eyes.appium.Target;
 import org.json.simple.parser.ParseException;
+import org.springframework.context.expression.MethodBasedEvaluationContext;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import utils.JsonReader;
@@ -68,7 +71,7 @@ public class ToDo_Android extends TestBase{
     @Test
     public void visualCheckInitialScreen () throws MalformedURLException {
         String appName = "ToDo";
-        String testName  = "Initial Screen"; //Batch name ====> see a way to improve
+        String testName  = "Visual Tests E2E";
 
         Android_setUp(); // We can call it because is a PUBLIC STATIC VOID
         taskListPage = new TaskListPage(driver);
@@ -95,7 +98,7 @@ public class ToDo_Android extends TestBase{
     @Test
     public void visualCheck_IgnoreRegions () throws MalformedURLException {
         String appName = "ToDo";
-        String testName  = "Initial Screen"; //Batch name ====> see a way to improve
+        String testName  = "Visual Tests E2E"; //Batch name ====> see a way to improve
             String NEW_TASK_NAME = "Manuela Gonzalez Bergez";
         String NEW_TASK_DESC = "Corriendo pruebas con Applitools";
 
@@ -119,6 +122,12 @@ public class ToDo_Android extends TestBase{
         tearDown();
 //        we'll need to see how to include visual check EXCLUDING
 //    the Strings so it can be a global test'
+    }
+
+    //    Stitching
+    @Test
+    public void visualCheck_Stitching () throws MalformedURLException {
+
     }
 
 

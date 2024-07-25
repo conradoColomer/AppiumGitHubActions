@@ -1,5 +1,6 @@
 package tests;
 
+import com.applitools.eyes.MatchLevel;
 import com.applitools.eyes.appium.Eyes;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.ios.IOSDriver;
@@ -43,6 +44,7 @@ public class TestBase extends AbstractTestNGCucumberTests  {
         eyes = new Eyes();
         eyes.setApiKey(API_KEY);
         eyes.setForceFullPageScreenshot(true);
+//        eyes.setMatchLevel(MatchLevel.CONTENT); STRICT, LAYOUT, ....
         eyes.open(driver, appName,testName);
 
 //        here we can set up the applitools eyes for each test
