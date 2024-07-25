@@ -2,10 +2,17 @@ package tests;
 
 import PageObjects.AndroidPopUp;
 import PageObjects.CreateTaskPage;
+import PageObjects.PageBase;
 import PageObjects.TaskListPage;
 import com.applitools.eyes.appium.Eyes;
 import com.applitools.eyes.appium.Target;
+import io.appium.java_client.MobileElement;
 import org.json.simple.parser.ParseException;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.context.expression.MethodBasedEvaluationContext;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -14,12 +21,11 @@ import utils.JsonReader;
 import java.io.IOException;
 import java.net.MalformedURLException;
 
-public class ToDo_Android extends TestBase{
+public class ToDo_Android extends TestBase {
 
     CreateTaskPage createTaskPage; // instancio clase de src/java/PageObjects.CreateTaskPage
     TaskListPage taskListPage; // instancio clase de src/java/PageObjects.TaskListPage
     AndroidPopUp androidPopUp;
-
 
     @DataProvider(name = "tasks data")
     public Object [] [] passData() throws IOException, ParseException {
@@ -60,7 +66,6 @@ public class ToDo_Android extends TestBase{
         createTaskPage.enterNoteDesc("taskDesc We are trying to run CIIIIII ");
         driver.hideKeyboard();
         createTaskPage.clickSaveBtn();}
-
         tearDown();
 
     }
@@ -95,12 +100,45 @@ public class ToDo_Android extends TestBase{
     }
 
 //      IGNORE REGIONS
+//    @Test
+//    public void visualCheck_IgnoreRegions () throws MalformedURLException {
+//        String appName = "ToDo";
+//        String testName  = "Visual Tests E2E"; //Batch name ====> see a way to improve
+//            String NEW_TASK_NAME = "Manuela Gonzalez Bergez";
+//        String NEW_TASK_DESC = "Corriendo pruebas con Applitools";
+//
+//        Android_setUp(); // We can call it because is a PUBLIC STATIC VOID
+//        taskListPage = new TaskListPage(driver);
+//        createTaskPage = new CreateTaskPage(driver);
+////       Creating Android prerequisite = avoid the Android popup
+//        androidPopUp = new AndroidPopUp(driver);
+//        if (androidPopUp.idDisplayedHandMade()){
+//            androidPopUp.clickLater();} else {
+//            initAppliToolsEyes(appName,testName);
+//            eyes.checkWindow("Create task page");
+//            taskListPage.clickAddTaskBtn();
+//            createTaskPage.enterTaskName(NEW_TASK_NAME);
+//            createTaskPage.enterNoteDesc(NEW_TASK_DESC);
+//            eyes.checkWindow("Task list input");
+//            driver.hideKeyboard();
+//            createTaskPage.clickSaveBtn();}
+//        eyes.checkWindow("initial screen with Task display");
+//
+//        tearDown();
+////        we'll need to see how to include visual check EXCLUDING
+////    the Strings so it can be a global test'
+//    }
+
+    //    Ignore regions with NEW_TASK_NAME & NEW_TASK_DESC
     @Test
     public void visualCheck_IgnoreRegions () throws MalformedURLException {
+
+
         String appName = "ToDo";
         String testName  = "Visual Tests E2E"; //Batch name ====> see a way to improve
-            String NEW_TASK_NAME = "Manuela Gonzalez Bergez";
+        String NEW_TASK_NAME = "Manuela Gonzalez Bergez";
         String NEW_TASK_DESC = "Corriendo pruebas con Applitools";
+
 
         Android_setUp(); // We can call it because is a PUBLIC STATIC VOID
         taskListPage = new TaskListPage(driver);
@@ -109,24 +147,28 @@ public class ToDo_Android extends TestBase{
         androidPopUp = new AndroidPopUp(driver);
         if (androidPopUp.idDisplayedHandMade()){
             androidPopUp.clickLater();} else {
-            initAppliToolsEyes(appName,testName);
-            eyes.checkWindow("Create task page");
+
+//            Starting applitools eyes
+            initAppliToolsEyesForIgnoringRegios(appName,testName);
+//            eyes.checkWindow("Create task page");
             taskListPage.clickAddTaskBtn();
             createTaskPage.enterTaskName(NEW_TASK_NAME);
             createTaskPage.enterNoteDesc(NEW_TASK_DESC);
-            eyes.checkWindow("Task list input");
             driver.hideKeyboard();
             createTaskPage.clickSaveBtn();}
-        eyes.checkWindow("initial screen with Task display");
+
+        // Esperar hasta que el elemento esté presente
+        WebDriverWait wait = new WebDriverWait(driver, 25);
+        MobileElement ignoringRegion = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.widget.ListView[@resource-id=\"com.jeffprod.todo:id/lv\"]/android.widget.RelativeLayout[1]")));
+
+        // Agregar una verificación visual ignorando una región específica
+        eyes.check(testName, Target.window().ignore(ignoringRegion));
+
+//        WebElement ignore = (WebElement) ExpectedConditions.visibilityOfElementLocated(By.xpath(""));
+//        //         check with targeting to a specific region
+//            eyes.check("ignoring region", Target.window().ignore(ignore));
 
         tearDown();
-//        we'll need to see how to include visual check EXCLUDING
-//    the Strings so it can be a global test'
-    }
-
-    //    Stitching
-    @Test
-    public void visualCheck_Stitching () throws MalformedURLException {
 
     }
 

@@ -44,18 +44,18 @@ public class TestBase extends AbstractTestNGCucumberTests  {
         eyes = new Eyes();
         eyes.setApiKey(API_KEY);
         eyes.setForceFullPageScreenshot(true);
-//        eyes.setMatchLevel(MatchLevel.CONTENT); STRICT, LAYOUT, ....
+//        eyes.setMatchLevel(MatchLevel.LAYOUT);
         eyes.open(driver, appName,testName);
-
-//        here we can set up the applitools eyes for each test
-//        we can also add as parameters the Test name / app / etc....
-//        also we can add the tear
-//                eyes.close
-//                        eyes.abort if not closed
-//        We can the initialize it befor every visual test we are going to start testing
-//                and in the final method of the class then execute the other method for shooting down eyes
     }
 
+
+    public static void initAppliToolsEyesForIgnoringRegios (String appName, String testName){
+        eyes = new Eyes();
+        eyes.setApiKey(API_KEY);
+        eyes.setForceFullPageScreenshot(true);
+        eyes.setMatchLevel(MatchLevel.LAYOUT);
+        eyes.open(driver, appName,testName);
+    }
 
     public static void tearDown() {
         // Cerrar Applitools Eyes si está presente y se ha iniciado una sesión

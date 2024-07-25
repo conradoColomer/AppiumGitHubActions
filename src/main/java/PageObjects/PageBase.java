@@ -1,5 +1,7 @@
 package PageObjects;
 
+import com.applitools.eyes.appium.Eyes;
+import com.applitools.eyes.appium.Target;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
@@ -39,6 +41,12 @@ public class PageBase {
         element.sendKeys(text);
 
     }
+
+//    Need to be worked
+//    public void ignore_region (String tagForVisualCheck , MobileElement element) {
+//        Eyes ey = new Eyes();
+//        ey.check(tagForVisualCheck, Target.window().ignore(element));
+//    }
 
     public String  getAttribute(MobileElement element, String attribute){
        waitForVisibility(element);
