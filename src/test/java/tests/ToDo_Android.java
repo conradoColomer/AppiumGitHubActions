@@ -150,8 +150,8 @@ public class ToDo_Android extends TestBase {
 
         String appName = "ToDo";
         String testName  = "Visual Tests E2E"; //Batch name ====> see a way to improve
-        String NEW_TASK_NAME = "Manuela Gonzalez Bergez";
-        String NEW_TASK_DESC = "Corriendo pruebas con Applitools";
+        String NEW_TASK_NAME = "aaaaaa aaa con";
+        String NEW_TASK_DESC = "P{aaaa con aaa geneaadfgfdsdfdsral";
 
 
         Android_setUp(); // We can call it because is a PUBLIC STATIC VOID
