@@ -44,12 +44,11 @@ public class TestBase extends AbstractTestNGCucumberTests  {
         eyes = new Eyes();
         eyes.setApiKey(API_KEY);
         eyes.setForceFullPageScreenshot(true);
-//        eyes.setMatchLevel(MatchLevel.LAYOUT);
         eyes.open(driver, appName,testName);
     }
 
 
-    public static void initAppliToolsEyesForIgnoringRegios (String appName, String testName){
+    public static void initAppliToolsEyes_LAYOUT(String appName, String testName){
         eyes = new Eyes();
         eyes.setApiKey(API_KEY);
         eyes.setForceFullPageScreenshot(true);
