@@ -143,6 +143,48 @@ public class ToDo_Android extends TestBase {
 
     }
 
+    //     IGNORE REGIONS in a general view. not specific locator.
+    @Test
+    public void visualCheck_IgnoreRegions_GeneralView () throws MalformedURLException, InterruptedException {
+
+
+        String appName = "ToDo";
+        String testName  = "Visual Tests E2E"; //Batch name ====> see a way to improve
+        String NEW_TASK_NAME = "Manuela Gonzalez Bergez";
+        String NEW_TASK_DESC = "Corriendo pruebas con Applitools";
+
+
+        Android_setUp(); // We can call it because is a PUBLIC STATIC VOID
+        taskListPage = new TaskListPage(driver);
+        createTaskPage = new CreateTaskPage(driver);
+
+        androidPopUp = new AndroidPopUp(driver);
+        if (androidPopUp.idDisplayedHandMade()){
+            androidPopUp.clickLater();} else {
+
+//            Starting applitools eyes
+            initAppliToolsEyes_LAYOUT(appName,testName);
+
+            taskListPage.clickAddTaskBtn();
+            createTaskPage.enterTaskName(NEW_TASK_NAME);
+            createTaskPage.enterNoteDesc(NEW_TASK_DESC);
+            driver.hideKeyboard();
+            createTaskPage.clickSaveBtn();}
+
+//        // Esperar hasta que el elemento esté presente
+//        WebDriverWait wait = new WebDriverWait(driver, 25);
+//        MobileElement ignoringRegion = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.widget.ListView[@resource-id=\"com.jeffprod.todo:id/lv\"]/android.widget.RelativeLayout[1]")));
+
+        // Agregar una verificación visual ignorando una región específica
+        eyes.checkWindow(testName);
+
+        Thread.sleep(30000);
+
+
+        tearDown();
+
+    }
+
 
 
 
