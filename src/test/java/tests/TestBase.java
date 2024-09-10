@@ -20,7 +20,7 @@ public class TestBase extends AbstractTestNGCucumberTests  {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("platformName", "Android");
 
-        capabilities.setCapability("platformVersion", "12");  // Ensure this matches the emulator API level
+        capabilities.setCapability("platformVersion", "11");  // Ensure this matches the emulator API level
 
         capabilities.setCapability("deviceName", "Android_12_c");
         capabilities.setCapability("automationName", "UiAutomator2");
