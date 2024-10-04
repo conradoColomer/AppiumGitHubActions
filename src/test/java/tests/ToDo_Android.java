@@ -1,9 +1,6 @@
 package tests;
 
-import PageObjects.AndroidPopUp;
-import PageObjects.CreateTaskPage;
-import PageObjects.PageBase;
-import PageObjects.TaskListPage;
+import PageObjects.*;
 import com.applitools.eyes.MatchLevel;
 import com.applitools.eyes.appium.Eyes;
 import com.applitools.eyes.appium.Target;
@@ -27,6 +24,7 @@ public class ToDo_Android extends TestBase {
     CreateTaskPage createTaskPage; // instancio clase de src/java/PageObjects.CreateTaskPage
     TaskListPage taskListPage; // instancio clase de src/java/PageObjects.TaskListPage
     AndroidPopUp androidPopUp;
+    RatePopUp rate;
 
 //    Regions with Applitools
     String APP_NAME = "ToDo";
@@ -35,43 +33,52 @@ public class ToDo_Android extends TestBase {
     String CONTENT_REGION_TEST = "Content region ignore";
     String LAYOUT_REGION_TEST = "Layout region ignore";
 
-    @DataProvider(name = "tasks data")
-    public Object [] [] passData() throws IOException, ParseException {
-        return JsonReader.getJSONData(System.getProperty("user.dir") + "/data/TaskData.json"
-                , "Tasks Data", 2 );
-    }
-
-    @Test (dataProvider =  "tasks data")
-    public void test_add_task (String taskName, String taskDesc) throws MalformedURLException {
-
-        Android_setUp(); // We can call it because is a PUBLIC STATIC VOID
-        taskListPage = new TaskListPage(driver);
-        createTaskPage = new CreateTaskPage(driver);
-//       Creating Android prerequisite = avoid the Android popup
-        androidPopUp = new AndroidPopUp(driver);
-        if (androidPopUp.idDisplayedHandMade()) {
-        androidPopUp.clickLater();
-        } else {
-        taskListPage.clickAddTaskBtn();
-        createTaskPage.enterTaskName(taskName);
-        createTaskPage.enterNoteDesc(taskDesc);
-        driver.hideKeyboard();
-        createTaskPage.clickSaveBtn();}
-
-        tearDown();
-
-    }
+//    @DataProvider(name = "tasks data")
+//    public Object [] [] passData() throws IOException, ParseException {
+//        return JsonReader.getJSONData(System.getProperty("user.dir") + "/data/TaskData.json"
+//                , "Tasks Data", 2 );
+//    }
+//
+//    @Test (dataProvider =  "tasks data")
+//    public void test_add_task (String taskName, String taskDesc) throws MalformedURLException {
+//
+//        Android_setUp(); // We can call it because is a PUBLIC STATIC VOID
+//
+//
+//        taskListPage = new TaskListPage(driver);
+//        createTaskPage = new CreateTaskPage(driver);
+////       Creating Android prerequisite = avoid the Android popup
+//        androidPopUp = new AndroidPopUp(driver);
+//        if (androidPopUp.idDisplayedHandMade()) {
+//        androidPopUp.clickLater();
+//        } else {
+//        taskListPage.clickAddTaskBtn();
+//        createTaskPage.enterTaskName(taskName);
+//        createTaskPage.enterNoteDesc(taskDesc);
+//        driver.hideKeyboard();
+//        createTaskPage.clickSaveBtn();}
+//
+//        tearDown();
+//
+//    }
 
     @Test
     public void test_add_task () throws MalformedURLException {
 
         Android_setUp(); // We can call it because is a PUBLIC STATIC VOID
+        rate = new RatePopUp(driver);
         taskListPage = new TaskListPage(driver);
         createTaskPage = new CreateTaskPage(driver);
 //       Creating Android prerequisite = avoid the Android popup
         androidPopUp = new AndroidPopUp(driver);
-       if (androidPopUp.idDisplayedHandMade()){
-        androidPopUp.clickLater();} else {
+       if (rate.idDisplayedHandMade()){
+        rate.clickLaterBtnRate();
+       taskListPage.clickAddTaskBtn();
+       createTaskPage.enterTaskName("taskName Conrado Mendez Colomer ");
+       createTaskPage.enterNoteDesc("taskDesc We are trying to run CIIIIII ");
+//       driver.hideKeyboard();
+       createTaskPage.clickSaveBtn();
+       } else {
         taskListPage.clickAddTaskBtn();
         createTaskPage.enterTaskName("taskName Conrado Mendez Colomer ");
         createTaskPage.enterNoteDesc("taskDesc We are trying to run CIIIIII ");
@@ -83,7 +90,6 @@ public class ToDo_Android extends TestBase {
 
 
 //    COMMON VISUAL CHECK
-
     @Test
     public void visualCheckInitialScreen () throws MalformedURLException {
         String appName = "ToDo";
@@ -94,17 +100,23 @@ public class ToDo_Android extends TestBase {
         createTaskPage = new CreateTaskPage(driver);
 //       Creating Android prerequisite = avoid the Android popup
         androidPopUp = new AndroidPopUp(driver);
-        if (androidPopUp.idDisplayedHandMade()){
-            androidPopUp.clickLater();} else {
+        rate = new RatePopUp(driver);
+
+        if (rate.idDisplayedHandMade()){
+            rate.clickLaterBtnRate();
             initAppliToolsEyes(appName,testName);
             eyes.checkWindow("Create task page");
             taskListPage.clickAddTaskBtn();
             createTaskPage.enterTaskName("taskName Conrado Mendez Colomer ");
             createTaskPage.enterNoteDesc("taskDesc We are trying to run CIIIIII ");
             eyes.checkWindow("Task list input");
-            driver.hideKeyboard();
-            createTaskPage.clickSaveBtn();}
-        eyes.checkWindow("initial screen with Task display");
+//            driver.hideKeyboard();
+            createTaskPage.clickSaveBtn();
+            eyes.checkWindow("initial screen with Task display");
+        } else {
+            stepsAppliToolsAndClose(testName,appName); }
+
+
 
         tearDown();
 
@@ -366,6 +378,18 @@ public void floatingRegionTest () throws MalformedURLException {
         }
 
 
+    }
+
+    public void stepsAppliToolsAndClose(String appName,String testName) {
+        initAppliToolsEyes(appName,testName);
+        eyes.checkWindow("Create task page");
+        taskListPage.clickAddTaskBtn();
+        createTaskPage.enterTaskName("taskName Conrado Mendez Colomer ");
+        createTaskPage.enterNoteDesc("taskDesc We are trying to run CIIIIII ");
+        eyes.checkWindow("Task list input");
+        driver.hideKeyboard();
+        createTaskPage.clickSaveBtn();
+        eyes.checkWindow("initial screen with Task display");
     }
 
 

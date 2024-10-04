@@ -23,7 +23,7 @@ public class CreateTaskPage extends  PageBase{
     @AndroidFindBy(id = "editTextTag")
     MobileElement tagInput;
 
-    @AndroidFindBy (id = "action_save")
+    @AndroidFindBy (id = "com.jeffprod.todo:id/action_save")
     @iOSXCUITFindBy(accessibility = "Save")
     MobileElement saveBtn;
 

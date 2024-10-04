@@ -26,6 +26,7 @@ public class TestBase extends AbstractTestNGCucumberTests  {
         capabilities.setCapability("automationName", "UiAutomator2");
         capabilities.setCapability("app", System.getProperty("user.dir") + "/apps/ToDo.apk");
         driver = new AppiumDriver(new URL("http://localhost:4723/"), capabilities);
+
     }
 
     public static void iOS_setUp() throws MalformedURLException {
